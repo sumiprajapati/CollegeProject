@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "813342172155",
+    "firebase_url": "https://tripsahayatri-9886b.firebaseio.com",
+    "project_id": "tripsahayatri-9886b",
+    "storage_bucket": "tripsahayatri-9886b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813342172155:android:dc693005c35bb6c7",
+        "android_client_info": {
+          "package_name": "com.example.de.tripshayatri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "813342172155-lm1o1tu7k4pipp11adt5m98ovs9jjreu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgGhXrGgFWiErtmZ1SFjFVbjKJ5K0VWww"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
