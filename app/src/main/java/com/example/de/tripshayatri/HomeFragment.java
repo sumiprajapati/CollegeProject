@@ -51,4 +51,11 @@ public class HomeFragment extends Fragment {
 
         return v;
     }
+    // from here implementation
+
+
+
+
+
+
 }

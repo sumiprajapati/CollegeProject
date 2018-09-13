@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProfileFragment extends Fragment {
-    String name,username,password,email,intrest;
+    String name,username,password,email,interest;
     TextView tname,tusername,temail,tintrest,ttopname;
     String currentuserid;
     RequestQueue requestQueue;
@@ -57,6 +57,7 @@ public class ProfileFragment extends Fragment {
                     name=obj2.getString("name");
                     username=obj2.getString("username");
                     email=obj2.getString("email");
+                    interest=obj2.getString("interest");
                     ttopname.setText(name);
                     tusername.setText(username);
                     tname.setText(name);

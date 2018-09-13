@@ -34,7 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Register extends AppCompatActivity{
-    EditText name,username,email,password;
+    EditText name,username,email,password,interest;
     Button submit;
     FirebaseAuth auth;
     ProgressDialog dialog;
@@ -54,6 +54,7 @@ public class Register extends AppCompatActivity{
         check=findViewById(R.id.check);
         username=findViewById(R.id.username);
         password=findViewById(R.id.password);
+        interest=findViewById(R.id.interests);
         submit=findViewById(R.id.register);
         cancel=findViewById(R.id.cancel);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -83,6 +84,7 @@ public class Register extends AppCompatActivity{
                 final String mypassword=password.getText().toString();
                 final String myname=name.getText().toString();
                 final String myusername=username.getText().toString();
+                final String myinterest=interest.getText().toString();
                 // intrest ko lagi baki cha//
                 if (TextUtils.isEmpty(myemail) || TextUtils.isEmpty(mypassword)|| TextUtils.isEmpty(myname)|| TextUtils.isEmpty(myusername)) {
                     Toast.makeText(Register.this, "Empty Field Detected", Toast.LENGTH_SHORT).show();
@@ -95,7 +97,7 @@ public class Register extends AppCompatActivity{
                         public void onSuccess(AuthResult authResult) {
                             String myid=authResult.getUser().getUid();
                             dialog.dismiss();
-                            insert(myid,myemail,mypassword,myname,myusername);
+                            insert(myid,myemail,mypassword,myname,myusername,myinterest);
 //                          Toast.makeText(Register.this, "Data Inserted", Toast.LENGTH_SHORT).show();
                           //ya sql database ko part lekhney
                         }
@@ -111,7 +113,7 @@ public class Register extends AppCompatActivity{
             }
         });
     }
-    public void insert(final String uid,final String email, final String password, final String name, final String username) {
+    public void insert(final String uid,final String email, final String password, final String name, final String username,final String interests) {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://192.168.137.1/subash/insert.php", new Response.Listener<String>() {
             @Override
@@ -157,6 +159,7 @@ public class Register extends AppCompatActivity{
                 myMap.put("password", password);
                 myMap.put("name", name);
                 myMap.put("email", email);
+                myMap.put("interest",interests);
                 return myMap;
             }
         };

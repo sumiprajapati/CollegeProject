@@ -79,7 +79,7 @@
             android:paddingLeft="12dp"
             android:textColorHint="#fff" />
         <EditText
-            android:id="@+id/intrest"
+            android:id="@+id/interests"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
