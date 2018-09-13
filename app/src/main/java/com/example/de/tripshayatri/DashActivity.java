@@ -15,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,6 +25,7 @@ import java.util.Map;
 
 public class DashActivity extends AppCompatActivity {
     TextView t1;
+    String currentuserid;
     String[] uname=new String[100];
     String id,name,username;
     RequestQueue requestQueue;
@@ -31,7 +33,8 @@ public class DashActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashlayout);
-         uname=getUser(id);
+        currentuserid= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        uname=getUser(currentuserid);
         t1=findViewById(R.id.view);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         uname=getUser(id);
@@ -54,7 +57,7 @@ public class DashActivity extends AppCompatActivity {
                     JSONObject obj1 = new JSONObject(response);
                     JSONArray a1=obj1.getJSONArray("user");
                     JSONObject obj2=a1.getJSONObject(0);
-                     name=obj2.getString("name");
+                    name=obj2.getString("name");
                      username=obj2.getString("username");
                      uname[0] =username;
                      uname[1]=name;

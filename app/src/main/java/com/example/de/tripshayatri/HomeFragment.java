@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 public class HomeFragment extends Fragment {
     RecyclerView rv,rv1,rv2,rv3,rv4,rv5,rv6;
-    String[] list = {};
+    String[] list = {"subash","subash"};
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
