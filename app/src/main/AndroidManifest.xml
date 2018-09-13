@@ -20,6 +20,7 @@
         <activity android:name=".Register"/>
         <activity android:name=".DashActivity"/>
         <activity android:name=".Test"/>
+        <activity android:name=".HomePage"/>
     </application>
 
 </manifest>

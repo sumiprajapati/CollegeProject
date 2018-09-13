@@ -54,7 +54,7 @@ TextView register;
 //                           editor.commit();
                            dialog.dismiss();
                            Toast.makeText(MainActivity.this, "Login Sucessfull", Toast.LENGTH_SHORT).show();
-                           Intent i = new Intent(MainActivity.this, DashActivity.class);
+                           Intent i = new Intent(MainActivity.this, HomePage.class);
                            startActivity(i);
                            //data from mysql
 
