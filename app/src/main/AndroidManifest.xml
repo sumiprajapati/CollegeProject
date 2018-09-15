@@ -21,6 +21,7 @@
         <activity android:name=".DashActivity"/>
         <activity android:name=".Test"/>
         <activity android:name=".HomePage"/>
+        <activity android:name=".Naya"/>
     </application>
 
 </manifest>

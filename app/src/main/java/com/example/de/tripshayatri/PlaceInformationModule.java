@@ -3,6 +3,7 @@ package com.example.de.tripshayatri;
 public class PlaceInformationModule {
     String pid;
     String name;
+
     String description;
 
     public String getPid() {

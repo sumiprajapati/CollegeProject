@@ -27,8 +27,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProfileFragment extends Fragment {
-    String name,username,password,email,interest;
-    TextView tname,tusername,temail,tintrest,ttopname;
+    String name,username,password,email,interests;
+    TextView tname,tusername,temail,tinterest,ttopname;
     String currentuserid;
     RequestQueue requestQueue;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class ProfileFragment extends Fragment {
         ttopname=v.findViewById(R.id.topname);
         tusername=v.findViewById(R.id.username);
         temail=v.findViewById(R.id.email);
-        tintrest=v.findViewById(R.id.intrest);
+        tinterest=v.findViewById(R.id.interest);
         currentuserid= FirebaseAuth.getInstance().getCurrentUser().getUid();
         requestQueue = Volley.newRequestQueue(getContext());
         getUser(currentuserid);
@@ -57,11 +57,12 @@ public class ProfileFragment extends Fragment {
                     name=obj2.getString("name");
                     username=obj2.getString("username");
                     email=obj2.getString("email");
-                    interest=obj2.getString("interest");
+                    interests=obj2.getString("interest");
                     ttopname.setText(name);
                     tusername.setText(username);
                     tname.setText(name);
                     temail.setText(email);
+                    tinterest.setText(interests);
                 }
                 catch(Exception e){
 
@@ -82,7 +83,7 @@ public class ProfileFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> myMap = new HashMap<>();
-                myMap.put("id", currentuserid);
+                myMap.put("id", id);
                 return myMap;
             }
         };

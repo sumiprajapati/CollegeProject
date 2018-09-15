@@ -78,18 +78,39 @@
             android:inputType="textPassword"
             android:paddingLeft="12dp"
             android:textColorHint="#fff" />
-        <EditText
-            android:id="@+id/interests"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/edittextbackgroud"
-            android:drawableLeft="@drawable/ic_favorite_black_24dp"
-            android:drawablePadding="10dip"
-            android:hint="Interest"
-            android:paddingLeft="12dp"
-            android:textColorHint="#fff" />
+       <LinearLayout
+           android:layout_width="250dp"
+           android:layout_height="50dp"
+           android:layout_gravity="center"
+           android:layout_marginTop="20dp"
+           android:background="@drawable/edittextbackgroud">
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_favorite_black_24dp"
+               android:paddingTop="12dp"
+               android:paddingLeft="9dp"/>
+           <LinearLayout
+               android:layout_width="190dp"
+               android:layout_height="40dp"
+               android:layout_gravity="center"
+               android:layout_marginLeft="10dp"
+               android:background="@drawable/viewbackground">
+               <Spinner
+
+
+                   android:layout_gravity="center"
+                   android:id="@+id/interest"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent" />
+           </LinearLayout>
+
+       </LinearLayout>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:visibility="invisible"
+            android:id="@+id/forinterest"/>
 
         <Button
             android:layout_width="250dp"

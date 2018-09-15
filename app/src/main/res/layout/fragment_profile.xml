@@ -178,7 +178,7 @@
             android:paddingLeft="10dp"
             android:background="@drawable/viewbackground"
             android:layout_gravity="center"
-            android:id="@+id/intrest"/>
+            android:id="@+id/interest"/>
     </LinearLayout>
     <!--<LinearLayout-->
     <!--android:layout_width="wrap_content"-->

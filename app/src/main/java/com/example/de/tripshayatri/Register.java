@@ -9,9 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,17 +37,62 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Register extends AppCompatActivity{
+    Spinner spinner;
     EditText name,username,email,password,interest;
     Button submit;
     FirebaseAuth auth;
     ProgressDialog dialog;
     RequestQueue requestQueue;
-    TextView cancel;
+    TextView cancel,forinterest;
     ImageButton check;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_layout);
+        spinner=findViewById(R.id.interest);
+        forinterest=findViewById(R.id.forinterest);
+        String[] place={"Interest","nature","cave","religious","travel and adventure","museam and park","camp"};
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,place);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch(i){
+                    case 0:
+                        forinterest.setText("");
+                        break;
+                    case 1:
+                        //
+                        forinterest.setText("nature");
+                        break;
+                    case 2:
+                        //
+                        forinterest.setText("cave");
+                        break;
+                    case 3:
+                        //
+                        forinterest.setText("relegious");
+                        break;
+                    case 4:
+                        //
+                        forinterest.setText("travel");
+                        break;
+                    case 5:
+                        //
+                        forinterest.setText("museam");
+                        break;
+                    case 6:
+                        //
+                        forinterest.setText("camp");
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         dialog=new ProgressDialog(Register.this);
         dialog.setMessage("Verifying User ...... Please Wait");
         dialog.setCancelable(false);
@@ -54,7 +102,7 @@ public class Register extends AppCompatActivity{
         check=findViewById(R.id.check);
         username=findViewById(R.id.username);
         password=findViewById(R.id.password);
-        interest=findViewById(R.id.interests);
+//        interest=findViewById(R.id.interests);
         submit=findViewById(R.id.register);
         cancel=findViewById(R.id.cancel);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -84,9 +132,9 @@ public class Register extends AppCompatActivity{
                 final String mypassword=password.getText().toString();
                 final String myname=name.getText().toString();
                 final String myusername=username.getText().toString();
-                final String myinterest=interest.getText().toString();
+                final String myinterest=forinterest.getText().toString();
                 // intrest ko lagi baki cha//
-                if (TextUtils.isEmpty(myemail) || TextUtils.isEmpty(mypassword)|| TextUtils.isEmpty(myname)|| TextUtils.isEmpty(myusername)) {
+                if (TextUtils.isEmpty(myemail) || TextUtils.isEmpty(mypassword)|| TextUtils.isEmpty(myinterest)|| TextUtils.isEmpty(myname)|| TextUtils.isEmpty(myusername)) {
                     Toast.makeText(Register.this, "Empty Field Detected", Toast.LENGTH_SHORT).show();
                 }
 
@@ -105,6 +153,7 @@ public class Register extends AppCompatActivity{
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             dialog.dismiss();
+                            Log.e("sagun",String.valueOf(e));
                             Toast.makeText(Register.this, "Failed", Toast.LENGTH_SHORT).show();
                         }
                     });
