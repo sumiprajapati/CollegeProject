@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Place"
+            android:text="Top Recommendation"
             android:textColor="#fff"
             android:textStyle="bold"
             android:textSize="15dp"
@@ -34,7 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Popular on TripSahayatri"
+            android:text="On Your Interest"
             android:textColor="#fff"
             android:textStyle="bold"
             android:textSize="15dp"
@@ -51,7 +51,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Trending Now"
+            android:text="Top Rated"
             android:textColor="#fff"
             android:textStyle="bold"
             android:textSize="15dp"

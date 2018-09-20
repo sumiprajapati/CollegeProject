@@ -31,8 +31,8 @@ public class CustomAdapter1 extends RecyclerView.Adapter <CustomAdapter1.MyViewH
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(c,Naya.class);
-                c.startActivity(i);
+//                Intent i=new Intent(c,Naya.class);
+//                c.startActivity(i);
             }
         });
         return new MyViewHolder(convertView);

@@ -40,20 +40,21 @@ public class HomeFragment extends Fragment {
     int fetch=0;
     String interests=null;
     int interestedplaces=0;
+    int popularplace=0;
     String[][] interestedplace=new String[30][7];
     String[][] allplace=new String[30][7];
     int tempcount=0;
     int l=0;
     int noofdata=0;
     String currentid;
-    RequestQueue requestQueue,requestQueue1,requestQueue2,requestQueue3;
+    RequestQueue requestQueue,requestQueue1,requestQueue2,requestQueue3,requestQueue4;
 //    String[][] r=new String[30000][3];
     String[][] data1=new String[2000][35];
     String[][] tempdata=new String[2000][35];
     double[] centered=new double[1200];
     int tempcol=0;
     List<String> placedata=new ArrayList<String>();
-    List<PlaceInformationModule> mydata=new ArrayList<>();
+    List<PlaceInformationModule1> mydata=new ArrayList<>();
 
     RecyclerView rv,rv1,rv2,rv3,rv4,rv5,rv6;
     String[] list = {"subash","subash"};
@@ -67,10 +68,11 @@ public class HomeFragment extends Fragment {
         requestQueue1= Volley.newRequestQueue(getContext());
         requestQueue2= Volley.newRequestQueue(getContext());
         requestQueue3= Volley.newRequestQueue(getContext());
+        requestQueue4= Volley.newRequestQueue(getContext());
         getAllUser();
         getUser(currentid);
 //        rearrange();
-
+        popular_place();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         rv.setLayoutManager(layoutManager);
         rv1 = v.findViewById(R.id.recyclerview1);
@@ -81,7 +83,7 @@ public class HomeFragment extends Fragment {
         rv2 = v.findViewById(R.id.recyclerview2);
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         rv2.setLayoutManager(layoutManager2);
-        rv2.setAdapter(new CustomAdapter2(getContext(), list));
+
 
         rv3 = v.findViewById(R.id.recyclerview3);
         LinearLayoutManager layoutManager3 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -580,6 +582,51 @@ public class HomeFragment extends Fragment {
         });
 
 
+    }
+    public void popular_place(){
+        StringRequest stringRequest4=new StringRequest(Request.Method.POST, "http://192.168.137.1/subash/popular.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try{
+                    JSONObject obj21 = new JSONObject(response);
+                    JSONArray a21=obj21.getJSONArray("user");
+                    popularplace=a21.length();
+                    for(int z=0;z<a21.length();z++) {
+                        PlaceInformationModule1 pm1=new PlaceInformationModule1();
+                        JSONObject obj22 = a21.getJSONObject(z);
+                        String upid = obj22.getString("pid");
+                        String upname= obj22.getString("name");
+                        String updescription = obj22.getString("description");
+                        String utype = obj22.getString("type");
+                        String uurl = obj22.getString("url");
+                        pm1.setPid(upid);
+                        pm1.setName(upname);
+                        pm1.setDescription(updescription);
+                        pm1.setUrl(uurl);
+                        mydata.add(pm1);
+
+                    }
+
+                }catch (Exception e){
+                    Toast.makeText(getContext(), "Exception aayo", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "Volley error aayo", Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueue4.add(stringRequest4);
+        requestQueue4.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<StringRequest>() {
+
+            @Override
+            public void onRequestFinished(Request<StringRequest> request) {
+                rv2.setAdapter(new CustomAdapter2(getContext(), mydata));
+            }
+        });
     }
 
 

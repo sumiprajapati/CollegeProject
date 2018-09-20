@@ -19,7 +19,7 @@ public class CustomAdapterException extends RecyclerView.Adapter <CustomAdapterE
     @NonNull
     @Override
     public CustomAdapterException.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View convertView= LayoutInflater.from(c).inflate(R.layout.myview2,parent,false);
+        View convertView= LayoutInflater.from(c).inflate(R.layout.exceptionview,parent,false);
         return new MyViewHolder(convertView);
     }
 
@@ -39,7 +39,7 @@ public class CustomAdapterException extends RecyclerView.Adapter <CustomAdapterE
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            tv=itemView.findViewById(R.id.name2);
+            tv=itemView.findViewById(R.id.name3);
         }
     }
 }

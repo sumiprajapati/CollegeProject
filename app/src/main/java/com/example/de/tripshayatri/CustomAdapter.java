@@ -31,7 +31,7 @@ public class CustomAdapter extends RecyclerView.Adapter <CustomAdapter.MyViewHol
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(c,Naya.class);
+                Intent i=new Intent(c,PlaceDetails.class);
                 c.startActivity(i);
             }
         });
