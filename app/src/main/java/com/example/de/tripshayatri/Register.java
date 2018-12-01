@@ -52,7 +52,8 @@ public class Register extends AppCompatActivity{
         spinner=findViewById(R.id.interest);
         forinterest=findViewById(R.id.forinterest);
         String[] place={"Interest","nature","cave","religious","travel and adventure","museam and park","camp"};
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,place);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.my_spinner_item,place);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -175,7 +176,7 @@ public class Register extends AppCompatActivity{
                         dialog.dismiss();
                         Toast.makeText(Register.this, "Data Inserted.", Toast.LENGTH_LONG).show();
                             Intent in = new Intent(Register.this, MainActivity.class);
-////                            startActivity(in);
+                                startActivity(in);
 
 
                     }

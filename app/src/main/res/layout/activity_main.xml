@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     tools:context=".MainActivity">
 
@@ -22,6 +23,7 @@
             android:drawableLeft="@drawable/ic_person_black_24dp"
             android:drawablePadding="10dip"
             android:hint="Username"
+            android:textColor="#fff"
             android:paddingLeft="12dp"
             android:textColorHint="#fff" />
 
@@ -35,9 +37,11 @@
             android:drawableLeft="@drawable/password"
             android:drawablePadding="10dip"
             android:hint="Password"
+            android:textColor="#fff"
             android:inputType="textPassword"
             android:paddingLeft="12dp"
             android:textColorHint="#fff" />
+
 
         <Button
             android:layout_width="250dp"

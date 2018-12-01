@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="#3a3a3a"
+    android:layout_marginRight="3dp"
+    android:layout_marginLeft="3dp"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
+    android:id="@+id/visited"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="210dp"
+            android:layout_height="150dp"
+            android:id="@+id/image"/>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:paddingLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name:"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    android:typeface="monospace" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pothana"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:id="@+id/placename"
+                    android:textStyle="italic"
+                    android:typeface="monospace" />
+            </LinearLayout>
+            <LinearLayout
+                android:paddingLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Address:"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    android:typeface="monospace" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pothana"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:id="@+id/placeaddress"
+                    android:textStyle="italic"
+                    android:typeface="monospace" />
+            </LinearLayout>
+            <LinearLayout
+                android:paddingLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rating:"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    android:typeface="monospace" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:id="@+id/placerating"
+                    android:textStyle="italic"
+                    android:typeface="monospace" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

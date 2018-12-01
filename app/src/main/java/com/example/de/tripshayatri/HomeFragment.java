@@ -1,5 +1,6 @@
 package com.example.de.tripshayatri;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -37,6 +38,7 @@ import java.util.TreeSet;
 import static java.lang.Math.sqrt;
 
 public class HomeFragment extends Fragment {
+    ProgressDialog dialog;
     int fetch=0;
     String interests=null;
     int interestedplaces=0;
@@ -69,6 +71,10 @@ public class HomeFragment extends Fragment {
         requestQueue2= Volley.newRequestQueue(getContext());
         requestQueue3= Volley.newRequestQueue(getContext());
         requestQueue4= Volley.newRequestQueue(getContext());
+        dialog=new ProgressDialog(getContext());
+        dialog.setMessage("Loading");
+        dialog.setCancelable(false);
+        dialog.show();
         getAllUser();
         getUser(currentid);
 //        rearrange();
@@ -354,8 +360,8 @@ public class HomeFragment extends Fragment {
             for (Map.Entry m : map.entrySet()) {
                 placedata.add((m.getValue()).toString());
             }
-            Log.e("No of place",String.valueOf(placedata.size()));
-            Log.e("placeid",placedata.get(1));
+//            Log.e("No of place",String.valueOf(placedata.size()));
+//            Log.e("placeid",placedata.get(1));
             //} ya samma ko if check vayo
 
   //-------------------------------------------------------------
@@ -440,7 +446,8 @@ public class HomeFragment extends Fragment {
                             }
                         }
 
-                        Log.e("subashh",finalplace.get(1).getUrl());
+//                        Log.e("subashh",finalplace.get(1).getUrl());
+                        dialog.dismiss();
                     rv.setAdapter(new CustomAdapter(getContext(), finalplace));
 
 
@@ -452,9 +459,9 @@ public class HomeFragment extends Fragment {
 
         }//thik cha
         else {
+            dialog.dismiss();
             rv.setAdapter(new CustomAdapterException(getContext(), list));
         }
-
 
     }
 

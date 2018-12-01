@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Trip Shayatri</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

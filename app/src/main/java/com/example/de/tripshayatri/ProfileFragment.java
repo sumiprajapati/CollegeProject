@@ -1,5 +1,6 @@
 package com.example.de.tripshayatri;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,10 +32,12 @@ public class ProfileFragment extends Fragment {
     String name,username,password,email,interests;
     TextView tname,tusername,temail,tinterest,ttopname;
     String currentuserid;
+    Button b1;
     RequestQueue requestQueue;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.fragment_profile,null);
         tname=v.findViewById(R.id.name);
+        b1=v.findViewById(R.id.logout);
         ttopname=v.findViewById(R.id.topname);
         tusername=v.findViewById(R.id.username);
         temail=v.findViewById(R.id.email);
@@ -41,6 +45,13 @@ public class ProfileFragment extends Fragment {
         currentuserid= FirebaseAuth.getInstance().getCurrentUser().getUid();
         requestQueue = Volley.newRequestQueue(getContext());
         getUser(currentuserid);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(getContext(),MainActivity.class);
+                startActivity(i);
+            }
+        });
 
 //        ((HomePage)getActivity()).getUser("");
         return v;

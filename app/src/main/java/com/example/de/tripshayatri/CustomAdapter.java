@@ -2,12 +2,15 @@ package com.example.de.tripshayatri;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -28,25 +31,19 @@ public class CustomAdapter extends RecyclerView.Adapter <CustomAdapter.MyViewHol
     @Override
     public CustomAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View convertView= LayoutInflater.from(c).inflate(R.layout.myview,parent,false);
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(c,PlaceDetails.class);
-                c.startActivity(i);
-            }
-        });
+
         return new MyViewHolder(convertView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, int position) {
-        String Pid=mydata.get(position).getPid();
-        String name=mydata.get(position).getName();
-        String address=mydata.get(position).getAddress();
-        String description=mydata.get(position).getDescription();
+       final String Pid=mydata.get(position).getPid();
+        final String name=mydata.get(position).getName();
+        final String address=mydata.get(position).getAddress();
+        final String description=mydata.get(position).getDescription();
         String lng=mydata.get(position).getLng();
         String ltd=mydata.get(position).getLtd();
-        String url=mydata.get(position).getUrl();
+        final String url=mydata.get(position).getUrl();
 
         Glide
                 .with(c)
@@ -54,6 +51,20 @@ public class CustomAdapter extends RecyclerView.Adapter <CustomAdapter.MyViewHol
                 .apply(new RequestOptions().override(800, 500))
                 .into(holder.tv);
         holder.tv1.setText(name);
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(c,PlaceDetails.class);
+                Bundle b=new Bundle();
+                b.putString("pid",Pid);
+                b.putString("name",name);
+                b.putString("address",address);
+                b.putString("description",description);
+                b.putString("url",url);
+                i.putExtras(b);
+                c.startActivity(i);
+            }
+        });
 
     }
 
@@ -65,11 +76,12 @@ public class CustomAdapter extends RecyclerView.Adapter <CustomAdapter.MyViewHol
     public class MyViewHolder extends RecyclerView.ViewHolder{
         ImageView tv;
         TextView tv1;
-
+        LinearLayout parentLayout;
         public MyViewHolder(View itemView) {
             super(itemView);
             tv=itemView.findViewById(R.id.image);
             tv1=itemView.findViewById(R.id.placename);
+            parentLayout=itemView.findViewById(R.id.mylayouts);
         }
     }
 }
